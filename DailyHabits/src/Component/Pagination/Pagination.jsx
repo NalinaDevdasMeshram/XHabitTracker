@@ -1,7 +1,30 @@
-import React from "react";
 import "./Pagination.css";
-const Pagination = () => {
-  return <div>Pagination</div>;
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+const Pagination = ({ updatePage, currentPage, totalPages }) => {
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      updatePage((prev) => prev - 1);
+    }
+  };
+  const handleNext = () => {
+    if (totalPages != currentPage) {
+      updatePage((prev) => prev + 1);
+    }
+  };
+
+  return (
+    <div className="paginationWrapper">
+      <button onClick={handlePrev} disabled={currentPage == 1}>
+        <IoIosArrowRoundBack />
+      </button>
+
+      <p>{currentPage}</p>
+
+      <button onClick={handleNext} disabled={totalPages == currentPage}>
+        <IoIosArrowRoundForward />
+      </button>
+    </div>
+  );
 };
 
 export default Pagination;

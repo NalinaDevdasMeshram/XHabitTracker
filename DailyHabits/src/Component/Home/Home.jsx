@@ -2,7 +2,18 @@ import "./Home.css";
 import Card from "../Cards/Card";
 import PieChart from "../Piechart/PieChart.jsx";
 import BarChart from "../BarChart/BarChart.jsx";
+import Modals from "../Modal/Modals.jsx";
+import DailyCompletion from "../DailyCompletion/DailyCompletion.jsx";
+import Completions from "../CompletionsCard/Completions.jsx";
+import { useState } from "react";
+import Form from "../form/Form.jsx";
 const Home = () => {
+  //show hide modal
+  const [isOpen, setIsOpen] = useState(false);
+  const handleFormOpen = () => {
+    console.log("Form Opened");
+    setIsOpen(true);
+  };
   return (
     <div>
       <h1>Habit Tracker</h1>
@@ -11,10 +22,24 @@ const Home = () => {
         <Card
           title="Update today's Progress"
           buttonText="+Add Data"
-          buttonType="Success"
+          handleClick={handleFormOpen}
         />
         <PieChart
           titlePieChart="Average Completions"
+          data={[
+            {
+              name: "Reading",
+            },
+            {
+              name: "Exercise",
+            },
+            {
+              name: "Meditation",
+            },
+          ]}
+        />
+        <BarChart
+          titleBarChart="Top Habits (Last Week)"
           data={[
             {
               name: "Reading",
@@ -30,8 +55,18 @@ const Home = () => {
             },
           ]}
         />
-        <BarChart titleBarChart="Top Habits (Last Week)" />
       </div>
+      {/* Daily Completions */}
+      <DailyCompletion
+        title="Recent Daily Completions"
+        details="details"
+        category="category"
+      />
+      <Completions />
+      {/* modal */}
+      <Modals isOpen={isOpen} setIsOpen={setIsOpen}>
+        <Form />
+      </Modals>
     </div>
   );
 };

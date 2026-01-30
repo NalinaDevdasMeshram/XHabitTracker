@@ -1,12 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import "./BarChart.css";
-const data = [
-  { name: "Reading", value: 3 },
-  { name: "Exercise", value: 2 },
-  { name: "Meditation", value: 3 },
-];
 
-export default function HorizontalBarChart({ titleBarChart }) {
+export default function HorizontalBarChart({ titleBarChart, data }) {
   return (
     <div className="barChart_container">
       <h3 className="titleChart">{titleBarChart}</h3>
@@ -21,7 +16,6 @@ export default function HorizontalBarChart({ titleBarChart }) {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis type="number" />
         <YAxis dataKey="name" type="category" />
-
         <Bar dataKey="value" fill="#7C7CE6" barSize={28} />
       </BarChart>
     </div>
