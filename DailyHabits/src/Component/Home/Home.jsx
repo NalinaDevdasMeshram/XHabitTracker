@@ -20,8 +20,8 @@ const Home = () => {
       {/*card, piechart and BarChart wrapper*/}
       <div className="card_container">
         <Card
-          title="Update today's Progress"
-          buttonText="+Add data"
+          title="Update Today's Progress"
+          buttonText="+ Add data"
           handleClick={handleFormOpen}
         />
         <PieChart
