@@ -12,21 +12,21 @@ const Form = () => {
         </label>
         <div className="checklabel_box">
           <label htmlFor="Reading">
-            <input type="Checkbox" />
+            <input type="Checkbox" name="reading" />
             Reading
           </label>
           <label htmlFor="Exercise">
-            <input type="Checkbox" />
+            <input type="Checkbox" name="exercise" />
             Exercise
           </label>
           <label htmlFor="Meditation">
-            <input type="Checkbox" />
+            <input type="Checkbox" name="meditaton" />
             Meditation
           </label>
         </div>
         <label htmlFor="Short Descript">
           Short Description:
-          <input type="text" placeholder="Enter a Short Description" required />
+          <input type="text" placeholder="Enter a short description" required />
         </label>
         <button type="submit" className="submitbtn">
           Submit
