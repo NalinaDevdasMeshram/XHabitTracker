@@ -21,7 +21,7 @@ const Home = () => {
       <div className="card_container">
         <Card
           title="Update today's Progress"
-          buttonText="+Add Data"
+          buttonText="+Add data"
           handleClick={handleFormOpen}
         />
         <PieChart
