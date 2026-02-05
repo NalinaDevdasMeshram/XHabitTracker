@@ -5,21 +5,10 @@ import BarChart from "../BarChart/BarChart.jsx";
 import Modals from "../Modal/Modals.jsx";
 import DailyCompletion from "../DailyCompletion/DailyCompletion.jsx";
 import Completions from "../CompletionsCard/Completions.jsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Form from "../form/Form.jsx";
 
 const Home = () => {
-  // local Storage data
-  const getLocalData = () => {
-    const data = localStorage.getItem("habits");
-    console.log("data", data);
-    if (data) {
-      return JSON.parse(data);
-    }
-  };
-  useEffect(() => {
-    localStorage.setItem("habits", JSON.stringify("habits"));
-  }, []);
   //show hide modal
   const [isOpen, setIsOpen] = useState(false);
   const handleFormOpen = () => {
