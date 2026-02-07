@@ -1,37 +1,75 @@
 import { useState } from "react";
 import "./Form.css";
-const Form = () => {
-  const [submitbtn, setSubmitbtn] = useState();
+const Form = ({ onSubmit }) => {
+  const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
+  const [habits, setHabits] = useState([]);
+
+  const handleCheckboxData = (habits) => {
+    setHabits((prev) =>
+      prev.includes(habits)
+        ? prev.filter((h) => h !== habits)
+        : [...prev, habits],
+    );
+  };
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+    onSubmit({ date, habits, description });
+  };
 
   return (
     <div className="formWrapper">
-      <form>
+      <form onSubmit={handleSubmitData}>
         <h3>what Did You Do Today?</h3>
         <label htmlFor="date">
-          Date: <input type="date" required />
+          Date:{" "}
+          <input
+            type="date"
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
         </label>
         <div className="checklabel_box">
           <label htmlFor="Reading">
-            <input type="Checkbox" name="reading" />
+            <input
+              type="checkbox"
+              name="reading"
+              onChange={() => handleCheckboxData("Reading")}
+            />
             Reading
           </label>
           <label htmlFor="Exercise">
-            <input type="Checkbox" name="exercise" />
+            <input
+              type="checkbox"
+              name="exercise"
+              onChange={() => handleCheckboxData("Exercise")}
+            />
             Exercise
           </label>
           <label htmlFor="Meditation">
-            <input type="Checkbox" name="meditaton" />
+            <input
+              type="checkbox"
+              name="meditaton"
+              onChange={() => handleCheckboxData("Meditation")}
+            />
             Meditation
           </label>
         </div>
         <label htmlFor="Short Descript">
           Short Description:
-          <input type="text" placeholder="Enter a short description" required />
+          <input
+            type="text"
+            placeholder="Enter a short description"
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
         </label>
         <button type="submit" className="submitbtn">
           Submit
         </button>
-        <button className="cancelbtn">Cancel</button>
+        <button type="button" className="cancelbtn">
+          Cancel
+        </button>
       </form>
     </div>
   );

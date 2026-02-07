@@ -17,9 +17,7 @@ const Pagination = ({ updatePage, currentPage, totalPages }) => {
       <button onClick={handlePrev} disabled={currentPage == 1}>
         <IoIosArrowRoundBack />
       </button>
-
       <p>{currentPage}</p>
-
       <button onClick={handleNext} disabled={totalPages == currentPage}>
         <IoIosArrowRoundForward />
       </button>
