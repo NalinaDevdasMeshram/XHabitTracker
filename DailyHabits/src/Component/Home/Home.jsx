@@ -42,7 +42,11 @@ const Home = () => {
     setEditIndex(null);
     setIsOpen(true);
   };
-  const handleForm = (formData) => {
+  const handlecancel = () => {
+    setEditIndex(null);
+    setIsOpen(false);
+  };
+  const handleSubmitForm = (formData) => {
     if (editIndex !== null) {
       // EDIT MODE
       setDailyCompletion((prev) =>
@@ -54,13 +58,12 @@ const Home = () => {
     }
     setIsOpen(false);
     setEditIndex(null);
-    // setIsOpen(false);
   };
 
-  const handleSubmitForm = (data) => {
-    setDailyCompletion((prev) => [...prev, data]);
-    setIsOpen(false);
-  };
+  // const handleSubmitForm = (data) => {
+  //   setDailyCompletion((prev) => [...prev, data]);
+  //   setIsOpen(false);
+  // };
   // delete data
   const handleDelete = (indexToRemove) => {
     setDailyCompletion((prev) =>
@@ -81,6 +84,7 @@ const Home = () => {
           title="Update Today's Progress"
           buttonText="+ Add data"
           handleClick={handleAdd}
+          handleCancel={handlecancel}
         />
         <PieChart titlePieChart="Average Completions" data={habitStats} />
         <BarChart titleBarChart="Top Habits (Last Week)" data={habitStats} />
@@ -98,6 +102,7 @@ const Home = () => {
         <Form
           onSubmit={handleSubmitForm}
           initialData={editIndex !== null ? dailyCompletion[editIndex] : null}
+          handleCancel={() => setIsOpen(false)}
         />
       </Modals>
     </div>

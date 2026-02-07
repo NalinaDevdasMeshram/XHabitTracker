@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Form.css";
-const Form = ({ onSubmit, initialData }) => {
+const Form = ({ onSubmit, initialData, handleCancel }) => {
   const [date, setDate] = useState(initialData?.date || "");
   const [description, setDescription] = useState(
     initialData?.description || "",
@@ -34,6 +34,7 @@ const Form = ({ onSubmit, initialData }) => {
           Date:{" "}
           <input
             type="date"
+            value={date}
             onChange={(e) => setDate(e.target.value)}
             required
           />
@@ -43,6 +44,7 @@ const Form = ({ onSubmit, initialData }) => {
             <input
               type="checkbox"
               name="reading"
+              checked={habits.includes("Reading")}
               onChange={() => handleCheckboxData("Reading")}
             />
             Reading
@@ -51,6 +53,7 @@ const Form = ({ onSubmit, initialData }) => {
             <input
               type="checkbox"
               name="exercise"
+              checked={habits.includes("Exercise")}
               onChange={() => handleCheckboxData("Exercise")}
             />
             Exercise
@@ -59,6 +62,7 @@ const Form = ({ onSubmit, initialData }) => {
             <input
               type="checkbox"
               name="meditaton"
+              checked={habits.includes("Meditation")}
               onChange={() => handleCheckboxData("Meditation")}
             />
             Meditation
@@ -69,6 +73,7 @@ const Form = ({ onSubmit, initialData }) => {
           <input
             type="text"
             placeholder="Enter a short description"
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
@@ -76,7 +81,7 @@ const Form = ({ onSubmit, initialData }) => {
         <button type="submit" className="submitbtn">
           {initialData ? "Update" : "Submit"}
         </button>
-        <button type="button" className="cancelbtn">
+        <button type="button" onClick={handleCancel} className="cancelbtn">
           Cancel
         </button>
       </form>
