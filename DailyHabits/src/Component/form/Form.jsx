@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Form.css";
-const Form = ({ onSubmit }) => {
-  const [date, setDate] = useState("");
-  const [description, setDescription] = useState("");
-  const [habits, setHabits] = useState([]);
+const Form = ({ onSubmit, initialData }) => {
+  const [date, setDate] = useState(initialData?.date || "");
+  const [description, setDescription] = useState(
+    initialData?.description || "",
+  );
+  const [habits, setHabits] = useState(initialData?.habits || []);
 
   const handleCheckboxData = (habits) => {
     setHabits((prev) =>
@@ -17,10 +19,17 @@ const Form = ({ onSubmit }) => {
     onSubmit({ date, habits, description });
   };
 
+  useEffect(() => {
+    if (initialData) {
+      setDate(initialData.date);
+      setDescription(initialData.description);
+      setHabits(initialData.habits);
+    }
+  }, [initialData]);
   return (
     <div className="formWrapper">
       <form onSubmit={handleSubmitData}>
-        <h3>what Did You Do Today?</h3>
+        {initialData ? <h3>Edit</h3> : <h3>what Did You Do Today?</h3>}
         <label htmlFor="date">
           Date:{" "}
           <input
@@ -65,7 +74,7 @@ const Form = ({ onSubmit }) => {
           />
         </label>
         <button type="submit" className="submitbtn">
-          Submit
+          {initialData ? "Update" : "Submit"}
         </button>
         <button type="button" className="cancelbtn">
           Cancel

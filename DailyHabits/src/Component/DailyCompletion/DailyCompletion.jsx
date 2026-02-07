@@ -1,7 +1,8 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
 import "./DailyCompletion.css";
-const DailyCompletion = ({ title, data }) => {
+
+const DailyCompletion = ({ title, data, onDelete, onEdit }) => {
   return (
     <div className="outerContainer">
       <h2>{title}</h2>
@@ -17,10 +18,14 @@ const DailyCompletion = ({ title, data }) => {
               </div>
               <div className="btn">
                 <p>{item.date}</p>
-                <button className="closebtn">
+                <button className="closebtn" onClick={() => onDelete(index)}>
                   <IoIosCloseCircleOutline size={20} />
                 </button>
-                <button className="editbtn" size={20}>
+                <button
+                  className="editbtn"
+                  size={20}
+                  onClick={() => onEdit(index)}
+                >
                   <CiEdit />
                 </button>
               </div>

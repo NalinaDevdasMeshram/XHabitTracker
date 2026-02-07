@@ -11,6 +11,7 @@ import Form from "../form/Form.jsx";
 const Home = () => {
   //show hide modal
   const [isOpen, setIsOpen] = useState(false);
+  const [editIndex, setEditIndex] = useState();
   // data persist in local storage
   const [dailyCompletion, setDailyCompletion] = useState(() => {
     const localStorageData = localStorage.getItem("habits");
@@ -35,14 +36,36 @@ const Home = () => {
       value,
     }));
   }, [dailyCompletion]);
-  const handleFormOpen = () => {
+  const handleFormOpen = (formData) => {
     setIsOpen(true);
-    console.log("form is open");
+    if (editIndex !== null) {
+      // EDIT MODE
+      setDailyCompletion((prev) =>
+        prev.map((item, index) => (index === editIndex ? formData : item)),
+      );
+    } else {
+      // ADD MODE
+      setDailyCompletion((prev) => [...prev, formData]);
+    }
+
+    setEditIndex(null);
+    // setIsOpen(false);
   };
 
   const handleSubmitForm = (data) => {
     setDailyCompletion((prev) => [...prev, data]);
     setIsOpen(false);
+  };
+  // delete data
+  const handleDelete = (indexToRemove) => {
+    setDailyCompletion((prev) =>
+      prev.filter((_, index) => index !== indexToRemove),
+    );
+  };
+  // Edit the form details
+  const handleEdit = (index) => {
+    setEditIndex(index);
+    setIsOpen(true);
   };
   return (
     <div>
@@ -61,11 +84,16 @@ const Home = () => {
       <DailyCompletion
         title="Recent Daily Completions"
         data={dailyCompletion}
+        onDelete={handleDelete}
+        onEdit={handleEdit}
       />
       <Completions />
       {/* modal */}
       <Modals isOpen={isOpen} setIsOpen={setIsOpen}>
-        <Form onSubmit={handleSubmitForm} />
+        <Form
+          onSubmit={handleSubmitForm}
+          initialData={editIndex !== null ? dailyCompletion[editIndex] : null}
+        />
       </Modals>
     </div>
   );
