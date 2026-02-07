@@ -28,6 +28,7 @@ const DailyCompletion = ({ title, data, onDelete, onEdit }) => {
                 >
                   <CiEdit />
                 </button>
+                <hr />
               </div>
             </div>
           );

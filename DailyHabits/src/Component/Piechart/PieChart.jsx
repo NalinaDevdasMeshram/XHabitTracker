@@ -38,21 +38,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function PieChartComponent({ titlePieChart, data }) {
-  // if (!data?.length) {
-  //   return (
-  //     <div
-  //       style={{
-  //         display: "flex",
-  //         alignItems: "center",
-  //         justifyContent: "center",
-  //       }}
-  //     >
-  //       No transactions!
-  //     </div>
-  //   );
-  // }
-
+export default function PieChartComponent({ titlePieChart, data, dataValue }) {
   return (
     <div className="barChart_container">
       <h3 className="titleChart">{titlePieChart}</h3>
@@ -60,6 +46,7 @@ export default function PieChartComponent({ titlePieChart, data }) {
         <PieChart width={400} height={400}>
           <Pie
             data={data}
+            dataValue={dataValue}
             cx="50%"
             cy="50%"
             labelLine={false}

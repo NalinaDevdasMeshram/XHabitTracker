@@ -103,6 +103,9 @@
    MOBILE RESPONSIVENESS
    ========================= */
 @media (max-width: 480px) {
+  .outerContainer p {
+    color: #000000;
+  }
   .completionCard {
     flex-direction: column;
     align-items: flex-start;
@@ -127,15 +130,19 @@
     width: 100%;
     margin-top: 10px;
     justify-content: space-between;
+    border: 2px solid black;
   }
-
   .btn p {
     font-size: 16px;
+    color: #ea9707;
   }
 
   .closebtn,
   .editbtn {
     width: 40px;
     height: 40px;
+  }
+  .closebtn {
+    margin-left: 45%;
   }
 }

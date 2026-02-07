@@ -11,7 +11,7 @@ import Form from "../form/Form.jsx";
 const Home = () => {
   //show hide modal
   const [isOpen, setIsOpen] = useState(false);
-  const [editIndex, setEditIndex] = useState();
+  const [editIndex, setEditIndex] = useState(null);
   // data persist in local storage
   const [dailyCompletion, setDailyCompletion] = useState(() => {
     const localStorageData = localStorage.getItem("habits");
@@ -36,8 +36,13 @@ const Home = () => {
       value,
     }));
   }, [dailyCompletion]);
-  const handleFormOpen = (formData) => {
+
+  //  open form add
+  const handleAdd = () => {
+    setEditIndex(null);
     setIsOpen(true);
+  };
+  const handleForm = (formData) => {
     if (editIndex !== null) {
       // EDIT MODE
       setDailyCompletion((prev) =>
@@ -47,7 +52,7 @@ const Home = () => {
       // ADD MODE
       setDailyCompletion((prev) => [...prev, formData]);
     }
-
+    setIsOpen(false);
     setEditIndex(null);
     // setIsOpen(false);
   };
@@ -75,7 +80,7 @@ const Home = () => {
         <Card
           title="Update Today's Progress"
           buttonText="+ Add data"
-          handleClick={handleFormOpen}
+          handleClick={handleAdd}
         />
         <PieChart titlePieChart="Average Completions" data={habitStats} />
         <BarChart titleBarChart="Top Habits (Last Week)" data={habitStats} />
