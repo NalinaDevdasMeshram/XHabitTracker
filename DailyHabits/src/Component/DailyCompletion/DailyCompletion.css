@@ -98,3 +98,44 @@
 .editbtn:hover {
   background-color: rgba(251, 140, 0, 0.1);
 }
+
+/* =========================
+   MOBILE RESPONSIVENESS
+   ========================= */
+@media (max-width: 480px) {
+  .completionCard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .cardbox {
+    width: 100%;
+  }
+
+  .cardbox p {
+    font-size: 15px;
+  }
+
+  .cardbox .habits {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+
+  .btn p {
+    font-size: 16px;
+  }
+
+  .closebtn,
+  .editbtn {
+    width: 40px;
+    height: 40px;
+  }
+}
