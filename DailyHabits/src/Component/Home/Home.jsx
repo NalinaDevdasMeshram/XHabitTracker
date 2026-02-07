@@ -12,6 +12,7 @@ const Home = () => {
   //show hide modal
   const [isOpen, setIsOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+
   // data persist in local storage
   const [dailyCompletion, setDailyCompletion] = useState(() => {
     const localStorageData = localStorage.getItem("habits");
@@ -24,7 +25,6 @@ const Home = () => {
 
   const habitStats = useMemo(() => {
     const counts = {};
-
     dailyCompletion.forEach((item) => {
       item.habits.forEach((habit) => {
         counts[habit] = (counts[habit] || 0) + 1;
@@ -64,6 +64,7 @@ const Home = () => {
   //   setDailyCompletion((prev) => [...prev, data]);
   //   setIsOpen(false);
   // };
+
   // delete data
   const handleDelete = (indexToRemove) => {
     setDailyCompletion((prev) =>

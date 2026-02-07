@@ -62,7 +62,6 @@ const Form = ({ onSubmit, initialData, handleCancel }) => {
             <input
               type="checkbox"
               name="meditaton"
-              checked={habits.includes("Meditation")}
               onChange={() => handleCheckboxData("Meditation")}
             />
             Meditation
