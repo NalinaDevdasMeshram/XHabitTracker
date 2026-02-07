@@ -5,13 +5,22 @@ import BarChart from "../BarChart/BarChart.jsx";
 import Modals from "../Modal/Modals.jsx";
 import DailyCompletion from "../DailyCompletion/DailyCompletion.jsx";
 import Completions from "../CompletionsCard/Completions.jsx";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Form from "../form/Form.jsx";
 
 const Home = () => {
   //show hide modal
   const [isOpen, setIsOpen] = useState(false);
-  const [dailyCompletion, setDailyCompletion] = useState([]);
+  // data persist in local storage
+  const [dailyCompletion, setDailyCompletion] = useState(() => {
+    const localStorageData = localStorage.getItem("habits");
+    return localStorageData ? JSON.parse(localStorageData) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(dailyCompletion));
+  }, [dailyCompletion]);
+
   const habitStats = useMemo(() => {
     const counts = {};
 
