@@ -38,7 +38,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function PieChartComponent({ titlePieChart, data, dataValue }) {
+export default function PieChartComponent({ titlePieChart, data }) {
   return (
     <div className="barChart_container">
       <h3 className="titleChart">{titlePieChart}</h3>
@@ -46,7 +46,6 @@ export default function PieChartComponent({ titlePieChart, data, dataValue }) {
         <PieChart width={400} height={400}>
           <Pie
             data={data}
-            dataValue={dataValue}
             cx="50%"
             cy="50%"
             labelLine={false}

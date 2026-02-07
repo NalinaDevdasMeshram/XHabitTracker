@@ -62,6 +62,7 @@ const Form = ({ onSubmit, initialData, handleCancel }) => {
             <input
               type="checkbox"
               name="meditaton"
+              checked={habits.includes("Meditation")}
               onChange={() => handleCheckboxData("Meditation")}
             />
             Meditation
@@ -77,7 +78,11 @@ const Form = ({ onSubmit, initialData, handleCancel }) => {
             required
           />
         </label>
-        <button type="submit" className="submitbtn">
+        <button
+          type="submit"
+          className="submitbtn"
+          disabled={habits.length === 0}
+        >
           {initialData ? "Update" : "Submit"}
         </button>
         <button type="button" onClick={handleCancel} className="cancelbtn">

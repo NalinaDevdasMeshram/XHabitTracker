@@ -20,7 +20,9 @@ const Home = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("habits", JSON.stringify(dailyCompletion));
+    if (dailyCompletion.length >= 0) {
+      localStorage.setItem("habits", JSON.stringify(dailyCompletion));
+    }
   }, [dailyCompletion]);
 
   const habitStats = useMemo(() => {
@@ -66,10 +68,8 @@ const Home = () => {
   // };
 
   // delete data
-  const handleDelete = (indexToRemove) => {
-    setDailyCompletion((prev) =>
-      prev.filter((_, index) => index !== indexToRemove),
-    );
+  const handleDelete = (id) => {
+    setDailyCompletion((prev) => prev.filter((item) => item.id !== id));
   };
   // Edit the form details
   const handleEdit = (index) => {
@@ -92,7 +92,7 @@ const Home = () => {
       </div>
       {/* Daily Completions */}
       <DailyCompletion
-        title="Recent Habits Completions"
+        title="Recent Habit Completions"
         data={dailyCompletion}
         onDelete={handleDelete}
         onEdit={handleEdit}
