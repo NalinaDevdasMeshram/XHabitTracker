@@ -92,7 +92,7 @@ const Home = () => {
       </div>
       {/* Daily Completions */}
       <DailyCompletion
-        title="Recent Daily Completions"
+        title="Recent Habits Completions"
         data={dailyCompletion}
         onDelete={handleDelete}
         onEdit={handleEdit}
