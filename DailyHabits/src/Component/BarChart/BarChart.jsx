@@ -3,7 +3,7 @@ import "./BarChart.css";
 
 export default function HorizontalBarChart({ titleBarChart, data }) {
   return (
-    <div className="barChart_container">
+    <div className="barChart_container" width="100%" height={250}>
       <h3 className="titleChart">{titleBarChart}</h3>
       <BarChart
         className="bar_card"

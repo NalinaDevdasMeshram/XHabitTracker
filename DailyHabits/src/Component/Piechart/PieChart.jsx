@@ -39,19 +39,19 @@ const renderCustomizedLabel = ({
 };
 
 export default function PieChartComponent({ titlePieChart, data }) {
-  if (!data?.length) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        No transactions!
-      </div>
-    );
-  }
+  // if (!data?.length) {
+  //   return (
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         alignItems: "center",
+  //         justifyContent: "center",
+  //       }}
+  //     >
+  //       No transactions!
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="barChart_container">
