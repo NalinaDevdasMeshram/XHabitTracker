@@ -1,0 +1,52 @@
+.barChart_container {
+  width: 100%;
+  min-height: 350px;
+  margin-top: 20px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+.bar_card {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 15px 0;
+  padding: 10px;
+
+  background-color: #ffffff;
+  color: #bbb6c1;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+
+  box-sizing: border-box;
+}
+
+.titleChart {
+  margin-top: 10px;
+  font-size: 30px;
+  color: #ffffff;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Mobile optimization */
+@media (max-width: 700px) {
+  .barChart_container {
+    min-height: auto;
+    padding: 8px;
+  }
+
+  .bar_card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .titleChart {
+    font-size: 20px;
+  }
+}
