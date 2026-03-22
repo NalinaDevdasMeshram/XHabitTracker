@@ -200,7 +200,7 @@ export const rejectOrganizerRequest = async (req, res) => {
         subject: "Organizer Request Update - XEvents",
         message: `Hello ${
           request.user.name
-        },\n\nWe have reviewed your request to become an organizer.\n\nUnfortunately, your request has been declined at this time.\n\n ${
+        },\n\nWe have reviewed your request to become an organizer.\n\nUnfortunately, your request has been declined at this time.\n\n${
           adminComments ? `Admin Comments: ${adminComments}\n\n` : ""
         }You can submit a new request after addressing the concerns.\n\nBest regards,\nXEvents Team`,
       });

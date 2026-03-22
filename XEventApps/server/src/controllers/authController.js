@@ -92,6 +92,7 @@ export const login = async (req, res) => {
 
     // Check password
     const isPasswordCorrect = await user.comparePassword(password);
+
     if (!isPasswordCorrect) {
       return res.status(401).json({
         success: false,
@@ -101,6 +102,7 @@ export const login = async (req, res) => {
 
     // Generate token
     const token = generateToken(user._id);
+
     res.status(200).json({
       success: true,
       message: "Login successful",
