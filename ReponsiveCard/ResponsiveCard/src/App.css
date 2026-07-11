@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-form {
+  margin: 25px;
+  padding: 10px;
+  width: 600px;
+  height: 400px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px #000000;
+  overflow: hidden;
+}
+input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 20px;
+  border: solid 1px;
+}
+button {
+  padding: 10px;
+  width: 100px;
+  background-color: #eda521;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+}
+button:hover {
+  background-color: #e7d4b2;
+}
+.btn {
+  margin: 10px;
+  padding: 4px;
+}
+.todoList {
+  display: flex;
+  flex-direction: row;
+}
