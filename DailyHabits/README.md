@@ -52,7 +52,7 @@ DailyHabits/
 
 ## screenshot
 
-![Daily Habit Tracker Dashboard] (./src/public/image.png)
+![Daily Habit Tracker Dashboard] (./DailyHabits/public/image.png)
 
 ## ⚙️ Installation and Setup
 
