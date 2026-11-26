@@ -1,4 +1,5 @@
 import Home from "./Component/Home/Home.jsx";
+
 const App = () => {
   return (
     <div>
